@@ -1,0 +1,28 @@
+{
+  "name": "share.it",
+  "version": "0.0.0",
+  "description": "share youtube playlists",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "envify": "~1.2.1",
+    "gulp": "~3.5.5",
+    "gulp-browserify": "~0.5.0",
+    "gulp-bundle": "~0.2.2",
+    "gulp-if": "~0.0.5",
+    "gulp-livereload": "~1.2.0",
+    "gulp-react": "~0.2.0",
+    "gulp-stylus": "~0.0.14",
+    "gulp-util": "~2.2.14",
+    "gulp-watch": "~0.5.2",
+    "react": "~0.9.0",
+    "react-tools": "~0.9.0",
+    "reactify": "~0.9.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "gulp ",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
