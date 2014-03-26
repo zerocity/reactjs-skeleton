@@ -1,13 +1,18 @@
 var gulp = require("gulp"),
     browserify = require("gulp-browserify"),
     react = require('gulp-react'),
-    gulpif = require('gulp-if'),
     stylus = require('gulp-stylus'),
     gutil = require('gulp-util'),
     livereload = require('gulp-livereload'),
     watch = require('gulp-watch');
 
-// Get and render all .styl files recursively
+gulp.task('html', function () {
+    gulp.src('index.html')
+        .pipe(watch())
+        .pipe(gulp.dest('./build'))
+        .pipe(livereload());
+});
+
 gulp.task('stylus', function () {
     gulp.src('./src/css/**/*.styl')
         .pipe(watch())
@@ -17,7 +22,8 @@ gulp.task('stylus', function () {
 });
 
 gulp.task('scripts', function () {
-    gulp.src('./src/js/**/*.js')
+    gulp.src('./src/js/*.js')
+        .pipe(watch())
         .pipe(react())
         .pipe(browserify({
               insertGlobals : false,
@@ -28,20 +34,4 @@ gulp.task('scripts', function () {
         .pipe(livereload());
 });
 
-gulp.task('watch', function() {
-  var server = livereload();
-  gulp.watch('build/**').on('change', function(file) {
-      server.changed(file.path);
-  });
-
-  gulp.watch('src/js/**/*.js', ['scripts']).on('change', function(file) {
-      server.changed(file.path);
-  });
-});
-
-
-gulp.task("default", ['scripts','stylus'],function() {
-    gulp.watch('src/js/*.js', ['scripts']);
-    gulp.watch('src/js/**/*.jsx', ['scripts']);
-    gulp.watch('src/css/*.styl', ['stylus']);
-})
+gulp.task("default", ['html','scripts','stylus']);
